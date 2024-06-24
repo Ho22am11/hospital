@@ -1,25 +1,27 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Staff;
 
-use Illuminate\Http\Request;
-use App\Actions\CreateAction ;
+use App\Actions\CreateAction;
+use App\Http\Controllers\Controller;
+use App\Models\Employee;
 use App\Traits\ApiResponseTrait;
+use Illuminate\Http\Request;
 
-class DoctorController extends Controller
+class EmployeeController extends Controller
 {
-    use ApiResponseTrait;
-   
-    public function index( )
+    use ApiResponseTrait ;
+    public function index()
     {
-        
+        //
     }
-
 
     public function create(CreateAction $createAction , Request $request)
     {
-        $doctor = $createAction->execute($request->all());
-        return $this->ApiResponse($doctor,'success store doctor',201);
+        $resourceType = 'Employee';
+        $data = $createAction->execute( $resourceType , $request->all());
+
+        return $this->ApiResponse($data , 'success store employee' , 201);
     }
 
     /**

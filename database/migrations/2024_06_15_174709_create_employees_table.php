@@ -18,7 +18,7 @@ return new class extends Migration
             $table->boolean('male');
             $table->string('phone_number');
             $table->date('date_appointment');
-            $table->date('salary');
+            $table->decimal('salary');
             $table->foreignId('id_section')->references('id')->on('sections')->cascadeOnDelete();
             $table->string('email');
             $table->timestamps();
