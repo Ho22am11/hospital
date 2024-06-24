@@ -4,21 +4,22 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Actions\CreateAction ;
+use App\Traits\ApiResponseTrait;
+
 class DoctorController extends Controller
 {
+    use ApiResponseTrait;
    
     public function index( )
     {
         
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
+
     public function create(CreateAction $createAction , Request $request)
     {
-        $user = $createAction->execute($request->all());
-        return response()->json($user, 201);
+        $doctor = $createAction->execute($request->all());
+        return $this->ApiResponse($doctor,'success store doctor',201);
     }
 
     /**
