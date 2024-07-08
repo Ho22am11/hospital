@@ -7,6 +7,7 @@ use App\Models\Docter;
 use App\Models\Employee;
 use App\Models\MedicalExamination;
 use App\Models\MedicalImaging;
+use App\Models\MedicalTests;
 use App\Models\Patient;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
@@ -25,6 +26,7 @@ class CreateAction
             'MedicalExamination' => MedicalExamination::class ,
             'Diagnose' => Diagnose::class ,
             'MedicalImaging' => MedicalImaging::class ,
+            'MedicalTests' => MedicalTests::class ,
         ];
         $modelClass = $models[$resourceType] ?? null;
 
