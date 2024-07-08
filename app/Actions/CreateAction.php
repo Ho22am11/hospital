@@ -4,6 +4,8 @@ namespace App\Actions;
 use App\Http\Controllers\Controller;
 use App\Models\Docter;
 use App\Models\Employee;
+use App\Models\MedicalExamination;
+use App\Models\Patient;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
@@ -17,6 +19,8 @@ class CreateAction
         $models = [
             'Docter' => Docter::class,
             'Employee' => Employee::class ,
+            'Patient' => Patient::class ,
+            'MedicalExamination' => MedicalExamination::class ,
         ];
         $modelClass = $models[$resourceType] ?? null;
 

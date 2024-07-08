@@ -2,6 +2,8 @@
 
 use App\Http\Controllers\Auth\AuthController;
 use App\Http\Controllers\DoctorController;
+use App\Http\Controllers\Medical\MedicalExaminationController;
+use App\Http\Controllers\Medical\PatientController;
 use App\Http\Controllers\Staff\EmployeeController;
 use App\Models\Employee;
 use Illuminate\Http\Request;
@@ -30,3 +32,6 @@ Route::post('/logout', [AuthController::class , 'logout']) ;
 
 Route::get('/create_doctor', [DoctorController::class , 'create']) ;
 Route::get('/create_employee', [EmployeeController::class , 'create']) ;
+Route::get('/create_patient', [PatientController::class , 'create']) ;
+
+Route::get('/create_examination', [MedicalExaminationController::class , 'create']) ;
