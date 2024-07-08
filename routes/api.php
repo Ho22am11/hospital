@@ -4,6 +4,7 @@ use App\Http\Controllers\Auth\AuthController;
 use App\Http\Controllers\DoctorController;
 use App\Http\Controllers\Medical\DiagnoseController;
 use App\Http\Controllers\Medical\MedicalExaminationController;
+use App\Http\Controllers\Medical\MedicalImagingController;
 use App\Http\Controllers\Medical\PatientController;
 use App\Http\Controllers\Staff\EmployeeController;
 use App\Models\Employee;
@@ -37,3 +38,4 @@ Route::get('/create_patient', [PatientController::class , 'create']) ;
 
 Route::get('/create_examination', [MedicalExaminationController::class , 'create']) ;
 Route::get('/create_diagnose', [DiagnoseController::class , 'create']) ;
+Route::get('/create_MedicalImaging', [MedicalImagingController::class , 'create']) ;
