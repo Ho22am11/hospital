@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Staff;
 
 use Illuminate\Http\Request;
 use App\Actions\CreateAction ;
@@ -20,7 +20,7 @@ class DoctorController extends Controller
     public function create(CreateAction $createAction , Request $request)
     {
         
-        $doctor = $createAction->execute('Docter' ,$request->all());
+        $doctor = $createAction->execute('Docter' ,$request->only('id_patient' , 'id_doctor' , 'total'));
         return $doctor ;
     }
 

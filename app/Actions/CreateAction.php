@@ -8,6 +8,7 @@ use App\Models\Employee;
 use App\Models\MedicalExamination;
 use App\Models\MedicalImaging;
 use App\Models\MedicalTests;
+use App\Models\Orders;
 use App\Models\Patient;
 use App\Models\ProdectPharmacy;
 use App\Models\User;
@@ -31,6 +32,7 @@ class CreateAction
             'MedicalImaging' => MedicalImaging::class ,
             'MedicalTests' => MedicalTests::class ,
             'ProdectPharmacy' => ProdectPharmacy::class ,
+            'Orders' => Orders::class ,
         ];
         $modelClass = $models[$resourceType] ?? null;
 

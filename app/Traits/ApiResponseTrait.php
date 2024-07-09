@@ -16,4 +16,8 @@ trait ApiResponseTrait{
         
     }
 
+    public function getid($data){
+        return $id = $data['id'] ;
+    }
+
 }

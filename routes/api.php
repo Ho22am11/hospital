@@ -1,12 +1,13 @@
 <?php
 
 use App\Http\Controllers\Auth\AuthController;
-use App\Http\Controllers\DoctorController;
+use App\Http\Controllers\Staff\DoctorController;
 use App\Http\Controllers\Medical\DiagnoseController;
 use App\Http\Controllers\Medical\MedicalExaminationController;
 use App\Http\Controllers\Medical\MedicalImagingController;
 use App\Http\Controllers\Medical\MedicalTestsController;
 use App\Http\Controllers\Medical\PatientController;
+use App\Http\Controllers\Orders\OrderController;
 use App\Http\Controllers\Orders\ProductPharmacyController;
 use App\Http\Controllers\Staff\EmployeeController;
 use App\Models\Employee;
@@ -43,3 +44,4 @@ Route::get('/create_diagnose', [DiagnoseController::class , 'create']) ;
 Route::get('/create_MedicalImaging', [MedicalImagingController::class , 'create']) ;
 Route::get('/create_MedicalTests', [MedicalTestsController::class , 'create']) ;
 Route::get('/create_ProductPharmacy', [ProductPharmacyController::class , 'create']) ;
+Route::get('/create_order', [OrderController::class , 'create']) ;

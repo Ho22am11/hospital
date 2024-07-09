@@ -8,4 +8,6 @@ use Illuminate\Database\Eloquent\Model;
 class IteamOrder extends Model
 {
     use HasFactory;
+    protected $guarded  = ['id'];
+
 }
