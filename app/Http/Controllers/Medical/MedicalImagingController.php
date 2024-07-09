@@ -18,7 +18,7 @@ class MedicalImagingController extends Controller
     public function create(Request $request , CreateAction $createAction)
     {
         $MedicalImaging = $createAction->execute('MedicalImaging' , $request->all());
-        return $this->ApiResponse($MedicalImaging , 'success store MedicalImaging' , 201);
+        return $MedicalImaging;
 
     }
 

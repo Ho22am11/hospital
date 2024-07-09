@@ -18,10 +18,10 @@ class EmployeeController extends Controller
 
     public function create(CreateAction $createAction , Request $request)
     {
-        $resourceType = 'Employee';
-        $data = $createAction->execute( $resourceType , $request->all());
+        
+        $Employee = $createAction->execute( 'Employee' , $request->all());
 
-        return $this->ApiResponse($data , 'success store employee' , 201);
+        return $Employee ;
     }
 
     /**

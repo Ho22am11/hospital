@@ -1,27 +1,24 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Orders;
 
+use App\Http\Controllers\Controller;
+use App\Traits\ApiResponseTrait;
 use Illuminate\Http\Request;
 use App\Actions\CreateAction ;
-use App\Traits\ApiResponseTrait;
-use App\Http\Controllers\Controller;
-
-class DoctorController extends Controller
+class ProductPharmacyController extends Controller
 {
+
     use ApiResponseTrait;
-   
-    public function index( )
+    public function index()
     {
-        
+        //
     }
 
-
-    public function create(CreateAction $createAction , Request $request)
+    public function create(Request $request , CreateAction $createAction)
     {
-        
-        $doctor = $createAction->execute('Docter' ,$request->all());
-        return $doctor ;
+        $prodect = $createAction->execute('ProdectPharmacy' , $request->all());
+        return $prodect ;
     }
 
     /**

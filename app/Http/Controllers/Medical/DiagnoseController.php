@@ -20,7 +20,7 @@ class DiagnoseController extends Controller
     public function create(Request $request , CreateAction $CreateAction )
     {
        $diagnose =  $CreateAction->execute('Diagnose' , $request->all());
-       return $this->ApiResponse($diagnose , 'diagnose success store' , 201 ) ;
+       return $diagnose ;
     }
 
     /**

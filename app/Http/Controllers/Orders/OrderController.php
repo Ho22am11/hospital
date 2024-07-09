@@ -1,27 +1,26 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Orders;
 
-use Illuminate\Http\Request;
-use App\Actions\CreateAction ;
-use App\Traits\ApiResponseTrait;
 use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
 
-class DoctorController extends Controller
+class OrderController extends Controller
 {
-    use ApiResponseTrait;
-   
-    public function index( )
+    /**
+     * Display a listing of the resource.
+     */
+    public function index()
     {
-        
+        //
     }
 
-
-    public function create(CreateAction $createAction , Request $request)
+    /**
+     * Show the form for creating a new resource.
+     */
+    public function create()
     {
-        
-        $doctor = $createAction->execute('Docter' ,$request->all());
-        return $doctor ;
+        //
     }
 
     /**

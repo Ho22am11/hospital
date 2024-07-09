@@ -20,7 +20,7 @@ class MedicalExaminationController extends Controller
     public function create(CreateAction $createAction , Request $request)
     {
       $examination =  $createAction->execute('MedicalExamination' , $request->all());
-      return $this->ApiResponse($examination , 'success store examination' , 201 ) ;
+      return $examination ;
     }
 
     /**

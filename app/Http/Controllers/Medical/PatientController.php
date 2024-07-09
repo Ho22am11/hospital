@@ -19,7 +19,7 @@ class PatientController extends Controller
     {
        $patient = $createAction->execute('Patient' , $request->all());
 
-        return $this->ApiResponse($patient ,'success store patient',201);
+        return $patient ;
     }
 
     /**

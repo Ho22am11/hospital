@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('prodect_pharmacies', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->date('salahea');
+            $table->string('salahea');
             $table->integer('quantaty');
             $table->decimal('price');
             $table->decimal('orginal_price');

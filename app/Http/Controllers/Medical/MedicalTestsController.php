@@ -21,7 +21,7 @@ class MedicalTestsController extends Controller
     public function create(Request $request , CreateAction $createAction)
     {
         $test = $createAction->execute('MedicalTests' , $request->all());
-        return $this->ApiResponse($test , 'success store Medical Tests' , 201 ) ;
+        return $test ;
     }
 
     /**

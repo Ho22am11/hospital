@@ -7,6 +7,7 @@ use App\Http\Controllers\Medical\MedicalExaminationController;
 use App\Http\Controllers\Medical\MedicalImagingController;
 use App\Http\Controllers\Medical\MedicalTestsController;
 use App\Http\Controllers\Medical\PatientController;
+use App\Http\Controllers\Orders\ProductPharmacyController;
 use App\Http\Controllers\Staff\EmployeeController;
 use App\Models\Employee;
 use Illuminate\Http\Request;
@@ -41,3 +42,4 @@ Route::get('/create_examination', [MedicalExaminationController::class , 'create
 Route::get('/create_diagnose', [DiagnoseController::class , 'create']) ;
 Route::get('/create_MedicalImaging', [MedicalImagingController::class , 'create']) ;
 Route::get('/create_MedicalTests', [MedicalTestsController::class , 'create']) ;
+Route::get('/create_ProductPharmacy', [ProductPharmacyController::class , 'create']) ;

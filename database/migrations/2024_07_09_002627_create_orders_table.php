@@ -11,11 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('iteam_orders', function (Blueprint $table) {
+        Schema::create('orders', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('order_id')->references('id')->on('orders')->cascadeOnDelete();
-            $table->foreignId('prodect_id')->references('id')->on('prodect_pharmacies')->cascadeOnDelete();
-            $table->integer('count');
+            $table->foreignId('patients_id')->references('id')->on('patients')->cascadeOnDelete();
+            $table->foreignId('doctor_id')->nullable()->references('id')->on('docters')->cascadeOnDelete();
+            $table->decimal('total');
             $table->timestamps();
         });
     }
@@ -25,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('iteam_orders');
+        Schema::dropIfExists('orders');
     }
 };
