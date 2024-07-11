@@ -5,6 +5,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Diagnose;
 use App\Models\Docter;
 use App\Models\Employee;
+use App\Models\Invoice;
 use App\Models\MedicalExamination;
 use App\Models\MedicalImaging;
 use App\Models\MedicalTests;
@@ -41,5 +42,19 @@ class CreateAction
         $user = $modelClass::create($data);
 
         return $this->ApiResponse($user , 'success store' , 201) ;
+    }
+
+    public  function storeInvoice($resourceType , $id , $price , $patient){
+        $foregin_key = [
+            'id_examinations' => 'id_examinations'
+        ];
+
+        $modelClass = $foregin_key[$resourceType] ?? null;
+
+        Invoice::create([
+            'price' => $price ,
+            'id_patient' => $patient ,
+            $modelClass => $id ,
+        ]);
     }
 }

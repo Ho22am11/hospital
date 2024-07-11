@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Medical;
 
 use App\Actions\CreateAction;
 use App\Http\Controllers\Controller;
+use App\Models\MedicalExamination;
 use App\Traits\ApiResponseTrait;
 use Illuminate\Http\Request;
 
@@ -20,6 +21,9 @@ class MedicalExaminationController extends Controller
     public function create(CreateAction $createAction , Request $request)
     {
       $examination =  $createAction->execute('MedicalExamination' , $request->all());
+      
+      $id_examination = MedicalExamination::latest()->first() ;
+      $invoces = $createAction->storeInvoice('id_examinations' , $id_examination->id , $id_examination->price , $id_examination->id_patient );
       return $examination ;
     }
 
