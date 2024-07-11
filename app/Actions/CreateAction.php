@@ -11,6 +11,7 @@ use App\Models\MedicalTests;
 use App\Models\Orders;
 use App\Models\Patient;
 use App\Models\ProdectPharmacy;
+use App\Models\Surgerie;
 use App\Models\User;
 use App\Traits\ApiResponseTrait;
 use Illuminate\Support\Facades\Hash;
@@ -33,6 +34,7 @@ class CreateAction
             'MedicalTests' => MedicalTests::class ,
             'ProdectPharmacy' => ProdectPharmacy::class ,
             'Orders' => Orders::class ,
+            'Surgerie' => Surgerie::class,
         ];
         $modelClass = $models[$resourceType] ?? null;
 

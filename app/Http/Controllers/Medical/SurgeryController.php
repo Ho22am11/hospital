@@ -1,40 +1,24 @@
 <?php
 
-namespace App\Http\Controllers\Orders;
+namespace App\Http\Controllers\Medical;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Actions\CreateAction ;
-use App\Models\IteamOrder;
-use App\Models\Orders;
-use App\Traits\ApiResponseTrait;
-
-class OrderController extends Controller
+class SurgeryController extends Controller
 {
-    use ApiResponseTrait ;
+    
     public function index()
     {
         //
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
+  
     public function create(Request $request , CreateAction $createAction)
     {
-       
+        $surgery = $createAction->execute( 'Surgerie',$request->all());
+        return $surgery ;
 
-      $orders =  Orders::create($request->all()) ;
-      $orderId = $orders->id;
-      foreach ($request->items as $item) {
-        IteamOrder::create([
-            'orders_id' => $orderId ,
-            'prodect_id' => $item['prodect_id'],
-            'count' => $item['quantity'],
-        ]);
-      }
-
-      return $this->ApiResponse($orders ,  'success store'  ,201);
     }
 
     /**
