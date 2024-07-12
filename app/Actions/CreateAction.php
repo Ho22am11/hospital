@@ -48,6 +48,7 @@ class CreateAction
         $foregin_key = [
             'id_examinations' => 'id_examinations',
             'id_imagings' => 'id_imagings',
+            'id_tests' => 'id_tests' ,
         ];
 
         $modelClass = $foregin_key[$resourceType] ?? null;

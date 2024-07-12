@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Medical;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Actions\CreateAction ;
+use App\Models\MedicalTests;
 use App\Traits\ApiResponseTrait;
 
 class MedicalTestsController extends Controller
@@ -21,6 +22,8 @@ class MedicalTestsController extends Controller
     public function create(Request $request , CreateAction $createAction)
     {
         $test = $createAction->execute('MedicalTests' , $request->all());
+        $testlast = MedicalTests::letest()->frist();
+        $createAction->storeInvoice('id_tests' ,$testlast->id ,$testlast->price , $testlast->id_patient );
         return $test ;
     }
 
