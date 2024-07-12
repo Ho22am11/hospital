@@ -22,6 +22,10 @@ return new class extends Migration
         Schema::table('invoices' , function (Blueprint $table){
             $table->foreignId('id_patient')->references('id')->on('patients')->cascadeOnDelete();
             $table->foreignId('id_examinations')->nullable()->references('id')->on('medical_examinations')->cascadeOnDelete();
+            $table->foreignId('id_imagings')->nullable()->references('id')->on('medical_imagings')->cascadeOnDelete();
+            $table->foreignId('id_tests')->nullable()->references('id')->on('medical_tests')->cascadeOnDelete();
+            $table->foreignId('id_orders')->nullable()->references('id')->on('orders')->cascadeOnDelete();
+            $table->foreignId('id_surgery')->nullable()->references('id')->on('surgeries')->cascadeOnDelete();
         });
     }
 

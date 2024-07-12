@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Medical;
 use App\Actions\CreateAction ;
 use App\Http\Controllers\Controller;
+use App\Models\MedicalImaging;
 use App\Traits\ApiResponseTrait;
 use Illuminate\Http\Request;
 
@@ -18,6 +19,8 @@ class MedicalImagingController extends Controller
     public function create(Request $request , CreateAction $createAction)
     {
         $MedicalImaging = $createAction->execute('MedicalImaging' , $request->all());
+        $MedicalImag = MedicalImaging::latest()->first();
+        $createAction->storeInvoice('id_imagings' , $MedicalImag->id , $MedicalImag->price , $MedicalImag->id_patient );
         return $MedicalImaging;
 
     }

@@ -46,7 +46,8 @@ class CreateAction
 
     public  function storeInvoice($resourceType , $id , $price , $patient){
         $foregin_key = [
-            'id_examinations' => 'id_examinations'
+            'id_examinations' => 'id_examinations',
+            'id_imagings' => 'id_imagings',
         ];
 
         $modelClass = $foregin_key[$resourceType] ?? null;

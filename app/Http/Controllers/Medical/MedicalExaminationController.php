@@ -23,7 +23,7 @@ class MedicalExaminationController extends Controller
       $examination =  $createAction->execute('MedicalExamination' , $request->all());
       
       $id_examination = MedicalExamination::latest()->first() ;
-      $invoces = $createAction->storeInvoice('id_examinations' , $id_examination->id , $id_examination->price , $id_examination->id_patient );
+     # $createAction->storeInvoice('id_examinations' , $id_examination->id , $id_examination->price , $id_examination->id_patient );
       return $examination ;
     }
 

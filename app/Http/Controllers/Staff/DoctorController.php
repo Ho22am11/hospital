@@ -20,7 +20,7 @@ class DoctorController extends Controller
     public function create(CreateAction $createAction , Request $request)
     {
         
-        $doctor = $createAction->execute('Docter' ,$request->only('id_patient' , 'id_doctor' , 'total'));
+        $doctor = $createAction->execute('Docter' ,$request->all());
         return $doctor ;
     }
 
