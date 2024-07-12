@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Medical;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Actions\CreateAction ;
+use App\Models\Surgerie;
+
 class SurgeryController extends Controller
 {
     
@@ -17,6 +19,8 @@ class SurgeryController extends Controller
     public function create(Request $request , CreateAction $createAction)
     {
         $surgery = $createAction->execute( 'Surgerie',$request->all());
+        $surgerylest = Surgerie::latest()->first();
+        $createAction->storeInvoice('id_surgery' , $surgerylest->id ,  $surgerylest->price , $surgerylest->id_patient );
         return $surgery ;
 
     }

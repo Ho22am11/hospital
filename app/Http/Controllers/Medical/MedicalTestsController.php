@@ -22,7 +22,7 @@ class MedicalTestsController extends Controller
     public function create(Request $request , CreateAction $createAction)
     {
         $test = $createAction->execute('MedicalTests' , $request->all());
-        $testlast = MedicalTests::letest()->frist();
+        $testlast = MedicalTests::latest()->first();
         $createAction->storeInvoice('id_tests' ,$testlast->id ,$testlast->price , $testlast->id_patient );
         return $test ;
     }
