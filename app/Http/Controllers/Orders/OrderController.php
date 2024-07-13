@@ -32,11 +32,9 @@ class OrderController extends Controller
             'prodect_id' => $item['prodect_id'],
             'count' => $item['quantity'],
         ]);
-
-        $createAction->storeInvoice('id_orders' ,  $orderId , $orders->total , $orders->patients_id );
-
       
       }
+      $createAction->storeInvoice('id_orders' ,  $orderId , $orders->total , $orders->patients_id );
 
       return $this->ApiResponse($orders ,  'success store'  ,201);
     }

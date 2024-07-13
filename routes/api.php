@@ -35,8 +35,8 @@ Route::post('/refresh', [AuthController::class , 'refresh']) ;
 Route::post('/login', [AuthController::class , 'login']) ;
 Route::post('/logout', [AuthController::class , 'logout']) ;
 
+Route::resource('doctor' , DoctorController::class);
 
-Route::get('/create_doctor', [DoctorController::class , 'create']) ;
 Route::get('/create_employee', [EmployeeController::class , 'create']) ;
 Route::get('/create_patient', [PatientController::class , 'create']) ;
 

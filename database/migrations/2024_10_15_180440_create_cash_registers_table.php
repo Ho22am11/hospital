@@ -19,6 +19,10 @@ return new class extends Migration
             $table->decimal('credit')->nullable();
             $table->timestamps();
         });
+        Schema::table('cash_registers' , function (Blueprint $table){
+            $table->foreignId('id_invoice')->references('id')->on('invoices')->cascadeOnDelete();
+
+        });
     }
 
     /**

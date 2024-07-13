@@ -1,7 +1,6 @@
 <?php
 namespace App\Actions;
 
-use App\Http\Controllers\Controller;
 use App\Models\Diagnose;
 use App\Models\Docter;
 use App\Models\Employee;
@@ -13,19 +12,14 @@ use App\Models\Orders;
 use App\Models\Patient;
 use App\Models\ProdectPharmacy;
 use App\Models\Surgerie;
-use App\Models\CashRegister;
-use App\Models\User;
 use App\Traits\ApiResponseTrait;
-use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\Validator;
-use Illuminate\Validation\ValidationException;
 
-class CreateAction
-{
+class UpdateAction{
 
     use ApiResponseTrait ;
-    public function execute($resourceType ,$data)
-    {
+
+    public function execute($resourceType , $data , $id ){
+
         $models = [
             'Docter' => Docter::class,
             'Employee' => Employee::class ,
@@ -37,23 +31,14 @@ class CreateAction
             'ProdectPharmacy' => ProdectPharmacy::class ,
             'Orders' => Orders::class ,
             'Surgerie' => Surgerie::class,
-        ];
-        $modelClass = $models[$resourceType] ?? null;
+        ]; 
+        
+     $modelClass = $models[$resourceType] ?? null;
 
-        $user = $modelClass::create($data);
+     $Model =  $modelClass::FindOrFail($id);
 
-        return $this->ApiResponse($user , 'success store' , 201) ;
-    }
+     $Model->update($data) ;
 
-    public  function storeInvoice($resourceType , $id , $price , $patient){
-       
-
-        Invoice::create([
-            'price' => $price ,
-            'id_patient' => $patient ,
-            $resourceType => $id ,
-        ]);
-
-
+     return $this->ApiResponse($Model , 'success updata' , 200) ;
     }
 }

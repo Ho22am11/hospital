@@ -4,8 +4,10 @@ namespace App\Http\Controllers\Staff;
 
 use Illuminate\Http\Request;
 use App\Actions\CreateAction ;
+use App\Actions\UpdateAction;
 use App\Traits\ApiResponseTrait;
 use App\Http\Controllers\Controller;
+use App\Models\Docter;
 
 class DoctorController extends Controller
 {
@@ -13,47 +15,33 @@ class DoctorController extends Controller
    
     public function index( )
     {
-        
+        return Docter::all() ;
     }
 
-
-    public function create(CreateAction $createAction , Request $request)
+    public function store(CreateAction $createAction , Request $request)
     {
-        
-        $doctor = $createAction->execute('Docter' ,$request->all());
+        $doctors = $createAction->execute('Docter' ,$request->all());
+        return $doctors ;
+    }
+
+    
+    public function show($id)
+    {
+        $doctor = Docter::findOrFail($id);
         return $doctor ;
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request)
-    {
-        //
-    }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
     public function edit(string $id)
     {
         //
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
+    public function update(Request $request, string $id , UpdateAction $updateAction)
     {
-        //
+        $doctor = $updateAction->execute('Docter' , $request->all() ,  $id );
+
+        return $doctor ;
     }
 
     /**
