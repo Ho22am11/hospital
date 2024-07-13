@@ -3,62 +3,43 @@
 namespace App\Http\Controllers\Medical;
 
 use App\Actions\CreateAction;
+use App\Actions\UpdateAction;
 use App\Http\Controllers\Controller;
+use App\Models\Patient;
 use App\Traits\ApiResponseTrait;
 use Illuminate\Http\Request;
 
 class PatientController extends Controller
 {
     use ApiResponseTrait ;
+
     public function index()
     {
-        //
+        return $this->ApiResponse(Patient::all() , 'all patients ' , 201);
     }
 
-    public function create(Request $request , CreateAction $createAction)
+    public function store(Request $request , CreateAction $createAction)
     {
-       $patient = $createAction->execute('Patient' , $request->all());
+        $patient = $createAction->execute('Patient' , $request->all());
 
         return $patient ;
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     */
     public function show(string $id)
     {
-        //
+        return $this->ApiResponse(Patient::find($id) , 'the patient ' , 201);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
+
+    public function update(Request $request, string $id , UpdateAction $updateAction)
     {
-        //
+        return $updateAction->execute('Patient' , $request->all() , $id);
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
+   
     public function destroy(string $id)
     {
-        //
+        Patient::destroy($id);
+        return $this->ApiResponse('' , 'done delete' , 204 ) ;
     }
 }
