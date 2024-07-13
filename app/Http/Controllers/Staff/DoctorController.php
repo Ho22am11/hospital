@@ -32,11 +32,6 @@ class DoctorController extends Controller
     }
 
 
-    public function edit(string $id)
-    {
-        //
-    }
-
     public function update(Request $request, string $id , UpdateAction $updateAction)
     {
         $doctor = $updateAction->execute('Docter' , $request->all() ,  $id );
@@ -44,11 +39,11 @@ class DoctorController extends Controller
         return $doctor ;
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
+    
     public function destroy(string $id)
     {
-        //
+        Docter::destroy($id);
+
+        return $this->ApiResponse('' , 'done delete' , 204 ) ;
     }
 }
