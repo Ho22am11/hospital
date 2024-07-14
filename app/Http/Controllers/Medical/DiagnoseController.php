@@ -19,8 +19,8 @@ class DiagnoseController extends Controller
 
     public function create(Request $request , CreateAction $CreateAction )
     {
-       $diagnose =  $CreateAction->execute('Diagnose' , $request->all());
-       return $diagnose ;
+        return   $CreateAction->execute('Diagnose' , $request->all());
+       
     }
 
     /**
