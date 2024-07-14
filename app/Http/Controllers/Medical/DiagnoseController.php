@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers\Medical;
 use App\Actions\CreateAction ;
+use App\Actions\UpdateAction;
 use App\Http\Controllers\Controller;
+use App\Models\Diagnose;
 use App\Traits\ApiResponseTrait;
 use Illuminate\Http\Request;
 
@@ -13,53 +15,28 @@ class DiagnoseController extends Controller
 
     public function index()
     {
-        //
+        return $this->ApiResponse(Diagnose::all() , 'All Diagnoses ' , 201);
     }
 
 
-    public function create(Request $request , CreateAction $CreateAction )
+    public function store(Request $request , CreateAction $CreateAction )
     {
         return   $CreateAction->execute('Diagnose' , $request->all());
-       
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     */
     public function show(string $id)
     {
-        //
+        return $this->ApiResponse(Diagnose::find($id) , 'the examination ' , 201);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
+    public function update(Request $request, string $id , UpdateAction $updateAction)
     {
-        //
+        return $updateAction->execute('Diagnose' , $request->all() , $id);
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
     public function destroy(string $id)
     {
-        //
+        Diagnose::destroy($id);
+        return $this->ApiResponse('' , 'done delete' , 204 ) ;
     }
 }
