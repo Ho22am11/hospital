@@ -5,63 +5,40 @@ namespace App\Http\Controllers\Medical;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Actions\CreateAction ;
+use App\Actions\UpdateAction;
 use App\Models\Surgerie;
+use App\Traits\ApiResponseTrait;
 
 class SurgeryController extends Controller
 {
-    
+    use ApiResponseTrait ;
     public function index()
     {
-        //
+        return $this->ApiResponse(Surgerie::all() , 'all Surgerie ' , 201);
     }
 
-  
-    public function create(Request $request , CreateAction $createAction)
+    public function store(Request $request, CreateAction $createAction)
     {
-        $surgery = $createAction->execute( 'Surgerie',$request->all());
-        $surgerylest = Surgerie::latest()->first();
-        $createAction->storeInvoice('id_surgery' , $surgerylest->id ,  $surgerylest->price , $surgerylest->id_patient );
-        return $surgery ;
-
+        return $createAction->execute( 'Surgerie',$request->all());
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request)
+
+    public function show($id)
     {
-        //
+        return $this->ApiResponse(Surgerie::find($id) , 'the Surgery ' , 201);
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
+
+    public function update(Request $request, $id , UpdateAction $updateAction)
     {
-        //
+        return $updateAction->execute('Surgerie' , $request->all() , $id);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
-    {
-        //
-    }
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
+    public function destroy($id)
     {
-        //
+        Surgerie::destroy($id);
+        return $this->ApiResponse('' , 'done delete' , 204 ) ;
     }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(string $id)
-    {
-        //
-    }
+    
 }
