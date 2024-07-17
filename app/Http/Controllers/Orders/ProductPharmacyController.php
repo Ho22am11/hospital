@@ -6,58 +6,38 @@ use App\Http\Controllers\Controller;
 use App\Traits\ApiResponseTrait;
 use Illuminate\Http\Request;
 use App\Actions\CreateAction ;
+use App\Actions\UpdateAction;
+use App\Models\ProdectPharmacy;
+
 class ProductPharmacyController extends Controller
 {
 
     use ApiResponseTrait;
     public function index()
     {
-        //
+        return $this->ApiResponse(ProdectPharmacy::all() , 'all Prodects' , 200); 
     }
 
-    public function create(Request $request , CreateAction $createAction)
+    public function store(Request $request  , CreateAction $createAction)
     {
-        $prodect = $createAction->execute('ProdectPharmacy' , $request->all());
-        return $prodect ;
+        return $createAction->execute('ProdectPharmacy' , $request->all());
+
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request)
+    public function show($id)
     {
-        //
+        return $this->ApiResponse(ProdectPharmacy::find($id) , 'the Prodect' , 200); 
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
+    public function update(Request $request, string $id , UpdateAction $updateAction) 
     {
-        //
+        return $updateAction->execute('ProdectPharmacy' , $request->all() , $id);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
-    {
-        //
-    }
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
+    public function destroy($id)
     {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(string $id)
-    {
-        //
+        ProdectPharmacy::destroy($id);
+        return $this->ApiResponse('' , 'done delete' , 204 ) ;
     }
 }

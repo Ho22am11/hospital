@@ -43,19 +43,5 @@ class ImageObserver
         //
     }
 
-    /**
-     * Handle the MedicalImaging "restored" event.
-     */
-    public function restored(MedicalImaging $medicalImaging): void
-    {
-        //
-    }
 
-    /**
-     * Handle the MedicalImaging "force deleted" event.
-     */
-    public function forceDeleted(MedicalImaging $medicalImaging): void
-    {
-        //
-    }
 }

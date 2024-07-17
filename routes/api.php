@@ -49,7 +49,8 @@ Route::resource('MedicalImaging' , MedicalImagingController::class);
 
 Route::resource('medical_test' , MedicalTestsController::class);
 
+Route::resource('Product_Pharmacy' , ProductPharmacyController::class);
 
-Route::get('/create_ProductPharmacy', [ProductPharmacyController::class , 'create']) ;
+
 Route::get('/create_order', [OrderController::class , 'create']) ;
 Route::get('/create_surgery', [SurgeryController::class , 'create']) ;
