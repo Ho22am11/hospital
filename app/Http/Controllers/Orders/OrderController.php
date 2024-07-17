@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Orders;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Actions\CreateAction ;
+use App\Actions\UpdateAction;
 use App\Models\IteamOrder;
 use App\Models\Orders;
 use App\Traits\ApiResponseTrait;
@@ -14,16 +15,13 @@ class OrderController extends Controller
     use ApiResponseTrait ;
     public function index()
     {
-        //
+        return $this->ApiResponse(Orders::all() , 'all Orders ' , 200); 
+
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create(Request $request , CreateAction $createAction)
+   
+    public function store(Request $request , CreateAction $createAction)
     {
-       
-
       $orders =  Orders::create($request->all()) ;
       $orderId = $orders->id;
       foreach ($request->items as $item) {
@@ -34,48 +32,24 @@ class OrderController extends Controller
         ]);
       
       }
-      $createAction->storeInvoice('id_orders' ,  $orderId , $orders->total , $orders->patients_id );
 
       return $this->ApiResponse($orders ,  'success store'  ,201);
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request)
+    public function show($id)
     {
-        //
+        return $this->ApiResponse(Orders::find($id) , 'all Prodects' , 200); 
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
+    public function update(Request $request, string $id , UpdateAction $updateAction)
     {
-        //
+        return $updateAction->execute('Orders' , $request->all() , $id);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
-    {
-        //
-    }
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
     public function destroy(string $id)
     {
-        //
+        Orders::destroy($id);
+        return $this->ApiResponse('' , 'done delete' , 204 ) ;
     }
 }

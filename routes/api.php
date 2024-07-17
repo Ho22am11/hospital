@@ -51,6 +51,7 @@ Route::resource('medical_test' , MedicalTestsController::class);
 
 Route::resource('Product_Pharmacy' , ProductPharmacyController::class);
 
+Route::resource('order' , OrderController::class);
 
-Route::get('/create_order', [OrderController::class , 'create']) ;
+
 Route::get('/create_surgery', [SurgeryController::class , 'create']) ;
