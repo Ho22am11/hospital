@@ -16,28 +16,29 @@ class ImageObserver
 
             $image = request()->file('file');
 
-            $name = time().'.'.$image->getClientOriginalExtension();
+            $name = $model->id.'.'.$image->getClientOriginalExtension();
 
             $path = 'images/'.request()->type ;
 
             $image->storeAs( $path , $name , 'upload_images') ;
 
             $model->img = $path.'/'.$name ;
+            
         }
     }
 
     /**
      * Handle the MedicalImaging "updated" event.
      */
-    public function updated(MedicalImaging $medicalImaging): void
+    public function updated(Model $model): void
     {
-        //
+        $model->img = 'fjdlj' ;
     }
 
     /**
      * Handle the MedicalImaging "deleted" event.
      */
-    public function deleted(MedicalImaging $medicalImaging): void
+    public function deleted(Model $model): void
     {
         //
     }

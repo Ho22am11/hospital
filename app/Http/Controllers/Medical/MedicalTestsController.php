@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Medical;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Actions\CreateAction ;
+use App\Actions\UpdateAction;
 use App\Models\MedicalTests;
 use App\Traits\ApiResponseTrait;
 
@@ -15,55 +16,30 @@ class MedicalTestsController extends Controller
 
     public function index()
     {
-        //
+        return $this->ApiResponse(MedicalTests::all() , 'the tests' , 201);
     }
 
 
-    public function create(Request $request , CreateAction $createAction)
+    public function store(Request $request, CreateAction $createAction)
     {
-        $test = $createAction->execute('MedicalTests' , $request->all());
-        $testlast = MedicalTests::latest()->first();
-        $createAction->storeInvoice('id_tests' ,$testlast->id ,$testlast->price , $testlast->id_patient );
-        return $test ;
+        return $createAction->execute('MedicalTests' , $request->all());
+
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request)
+    public function show( $id)
     {
-        //
+        return $this->ApiResponse(MedicalTests::find($id) , 'the tests' , 201);
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
+    public function update(Request $request, $id , UpdateAction $updateAction )
     {
-        //
+        return $updateAction->execute('MedicalTests' , $request->all() , $id); 
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
-    {
-        //
-    }
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
     public function destroy(string $id)
     {
-        //
+        MedicalTests::destroy($id);
+        return $this->ApiResponse('' , 'done delete' , 204 ) ;
     }
 }

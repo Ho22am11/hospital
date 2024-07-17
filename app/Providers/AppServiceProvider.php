@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use App\Models\MedicalImaging;
+use App\Models\MedicalTests;
 use App\Observers\ImageObserver;
 use Illuminate\Support\ServiceProvider;
 
@@ -22,5 +23,6 @@ class AppServiceProvider extends ServiceProvider
     public function boot(): void
     {
         MedicalImaging::observe(ImageObserver::class);
+        MedicalTests::observe(ImageObserver::class);
     }
 }
