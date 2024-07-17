@@ -12,9 +12,18 @@ class ImageObserver
      */
     public function created(Model $model): void
     {
-        $model->update([
-            'img' => 'hossam' ,
-        ]);
+        if (request()->hasfile('file')){
+
+            $image = request()->file('file');
+
+            $name = time().'.'.$image->getClientOriginalExtension();
+
+            $path = 'images/'.request()->type ;
+
+            $image->storeAs( $path , $name , 'upload_images') ;
+
+            $model->img = $path.'/'.$name ;
+        }
     }
 
     /**
