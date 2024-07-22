@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Auth\AuthController;
+use App\Http\Controllers\infrastruction\RoomController;
 use App\Http\Controllers\Staff\DoctorController;
 use App\Http\Controllers\Medical\DiagnoseController;
 use App\Http\Controllers\Medical\MedicalExaminationController;
@@ -54,5 +55,7 @@ Route::resource('Product_Pharmacy' , ProductPharmacyController::class);
 Route::resource('order' , OrderController::class);
 
 Route::resource('surgery' , SurgeryController::class);
+
+Route::resource('rooms' , RoomController::class);
 
 

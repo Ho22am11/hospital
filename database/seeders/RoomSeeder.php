@@ -15,7 +15,7 @@ class RoomSeeder extends Seeder
     {
        
         for ($num_room = 1 ; $num_room <= 100 ; $num_room++ ){
-            Room::create(['name' => $num_room , 'status' => false ]);
+            Room::create(['name' => $num_room , 'status' => false]);
         } 
     }
 }

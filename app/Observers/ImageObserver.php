@@ -27,7 +27,7 @@ class ImageObserver
         }
     }
 
-    /**
+    /** BookRoom
      * Handle the MedicalImaging "updated" event.
      */
     public function updated(Model $model): void

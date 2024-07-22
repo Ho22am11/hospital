@@ -11,6 +11,7 @@ use App\Models\MedicalTests;
 use App\Models\Orders;
 use App\Models\Patient;
 use App\Models\ProdectPharmacy;
+use App\Models\Room;
 use App\Models\Surgerie;
 use App\Traits\ApiResponseTrait;
 
@@ -31,6 +32,7 @@ class UpdateAction{
             'ProdectPharmacy' => ProdectPharmacy::class ,
             'Orders' => Orders::class ,
             'Surgerie' => Surgerie::class,
+            'Room' => Room::class ,
         ]; 
         
      $modelClass = $models[$resourceType] ?? null;
